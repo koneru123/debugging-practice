@@ -27,14 +27,47 @@ var findObject = function(list, key, value) {
   return null;
 };
 
-var dogs = [
+//assert function
+function assertEqual(actual, expected, testName) {
+  actual = JSON.stringify(actual);
+  expected = JSON.stringify(expected);
+  if(actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`failed ${testName}, expected ${expected}, but got ${actual}`);
+  }
+}
+
+//test cases
+//Passed Scenario
+var dogs1 = [
   { name: 'Scout', breed: 'Husky' },
   { name: 'Lucky', breed: 'Beagle' },
   { name: 'Shadow', breed: 'Husky' },
   { name: 'Molly', breed: 'Collie' }
 ];
-//This would always evaluate to null
-console.log(findObject(dogs, 'breed', 'Husky')); //should return { name: 'Scout', breed: 'Husky' }
+const key1 = 'breed';
+const value1 = 'Husky';
+const result1 = findObject(dogs1, key1, value1);
+const expected1 =  { name: 'Scout', breed: 'Husky' };
+assertEqual(result1, expected1, 'This should return the object');
+
+//Failed Scenario
+var dogs2 = [
+  { name: 'Scout', breed: 'Husky' },
+  { name: 'Lucky', breed: 'Beagle' },
+  { name: 'Shadow', breed: 'Husky' },
+  { name: 'Molly', breed: 'Collie' }
+];
+const key2 = 'breed';
+const value2 = 'Husky';
+const result2 = findObject(dogs1, key1, value1);
+const expected2 =  { breed: 'Husky' };
+assertEqual(result2, expected2, 'This should not return the expected object');
+
+//console.log(findObject(dogs, 'breed', 'Husky')); //should return { name: 'Scout', breed: 'Husky' }
+
+
 
 
 
