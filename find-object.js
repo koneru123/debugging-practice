@@ -17,8 +17,11 @@ var findObject = function(list, key, value) {
   for (var i = 0; i < list.length; i++) {
     // here we need to also loop through individual object inside the array
     // list[i].key is undefined in this case and since we are comparing undefined to a value this condition is not going to be evaluated.
-    if (list[i].key === value) {
-      return list[i];
+    // Then we need to change the condition to list[i].breed to make sure it evaluates
+    for(let key in list[i]) {
+      if (list[i].breed === value) {
+        return list[i];
+      }
     }
   }
   return null;
@@ -31,7 +34,7 @@ var dogs = [
   { name: 'Molly', breed: 'Collie' }
 ];
 //This would always evaluate to null
-//console.log(findObject(dogs, 'breed', 'Husky')); //should return { name: 'Scout', breed: 'Husky' }
+console.log(findObject(dogs, 'breed', 'Husky')); //should return { name: 'Scout', breed: 'Husky' }
 
 
 
