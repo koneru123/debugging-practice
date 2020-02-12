@@ -1,5 +1,3 @@
-Array.from(someArray)
-
 /*
   Write a function, findObject, that takes an array of objects, a key,
   and a value, and returns the first object with a key/value pair that
