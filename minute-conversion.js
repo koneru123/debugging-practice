@@ -15,14 +15,21 @@ var minuteConversion = function(min) {
   let mins = min % 60;
   let hours = (min - mins) / 60;
   let result = '';
-  if (hours > 1) { 
+  const hoursText = hours > 1 ? 'hours' : 'hour';
+  const minutesText = mins > 1 ? 'minutes' : 'minute';
+  result = `${hours} ${hoursText} ${mins} ${minutesText}`
+  // The way we are handling this logic is confusing and we need to handle hour vs hours & minute vs minutes based on the number. In this case we can use terinary operator.
+  /*if (hours > 1) {
     result += hours + ' hours';
-  } else if (hours === 1) { 
+  } else if (hours === 1) {
     result += '1 hour';
-  } else if (mins > 1) { 
+  } else if (mins > 1) {
     result += mins + ' minutes';
-  } else if (mins === 1) { 
+  } else if (mins === 1) {
     result += '1 minute';
-  }
+  }*/
   return result;
 };
+
+const min1 = 210;
+console.log(minuteConversion(min1)); // returns 3 hours 30 minutes
