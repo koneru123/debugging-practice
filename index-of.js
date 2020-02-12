@@ -5,13 +5,25 @@
 */
 
 var indexOf = function(arr, val) {
-  let found = [];
+  //we dont need an empty array variable here, we are complicating it
+  //let found = [];
+  //we can create an index variable and assign it to 0
+  let index = 0;
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] === val) {
-      found.push(i);
+      //we can remove this push method, this is not needed
+      //found.push(i);
+      //then we can assign the index to i once found
+      index = i;
     } else {
-      return -1;
+      //if not found we can assign it to -1
+      index = -1;
     }
   }
-  return found[found.length - 1];
+  //then we can return this index
+  return index;
 };
+
+const arr = [1, 2, 3];
+const val = 4;
+console.log(indexOf(arr, val));
